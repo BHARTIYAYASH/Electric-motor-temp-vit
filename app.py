@@ -4,10 +4,8 @@ import numpy as np
 import pandas as pd
 import warnings
 
-# Suppress sklearn warnings
 warnings.filterwarnings('ignore')
 
-# Initialize Flask app
 app = Flask(__name__)
 
 # Load the model
@@ -18,7 +16,6 @@ except FileNotFoundError:
     print("Warning: best_model.pkl not found. Please ensure the file exists in the project directory.")
     model = None
 
-# Define correct feature names based on training
 FEATURE_NAMES = ['u_q', 'coolant', 'stator_winding', 'u_d', 'stator_tooth', 
                  'motor_speed', 'i_d', 'i_q', 'stator_yoke', 'torque']
 
@@ -49,7 +46,6 @@ def y_predict():
               f"u_d={u_d}, stator_tooth={stator_tooth}, motor_speed={motor_speed}, "
               f"i_d={i_d}, i_q={i_q}, stator_yoke={stator_yoke}, torque={torque}")
         
-        # Create input data with correct feature names
         input_data = pd.DataFrame({
             'u_q': [u_q],
             'coolant': [coolant],
