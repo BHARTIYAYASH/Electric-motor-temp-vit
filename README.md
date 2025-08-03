@@ -53,54 +53,64 @@ This ML-based Flask app allows users to input real-time motor parameters and get
 | tzdata          | 2025.2    |
 | others          | click, colorama, MarkupSafe, etc.
 
----
-
 ## 🚀 How to Run Locally
 
-1. **Clone the repository**
-
-git clone https://github.com/BHARTIYAYASH/Electric-motor-temp-vit.git
+### 1. Clone the Repository
+```bash
+git clone https://github.com/BHARTIYAYASH/electric-motor-temp-vit.git
 cd motor-temp-prediction
+```
 
-2. **Create a Virtual Environment and Activate It**
-
+### 2. Create a Virtual Environment and Activate It
+```bash
+# Create virtual environment
 python -m venv env
-env\Scripts\activate        # On Windows
-# source env/bin/activate   # On macOS/Linux
 
-3. **Install All Required Packages**
+# Activate on Windows
+env\Scripts\activate
 
+# Activate on macOS/Linux
+source env/bin/activate
+```
+
+### 3. Install All Required Packages
+```bash
 pip install -r requirements.txt
+```
 
-4. **Ensure the Model File Exists**
-Make sure the file best_model.pkl (your trained ML model) is present in the project root directory.
+### 4. Ensure the Model File Exists
+Make sure the file `best_model.pkl` (your trained ML model) is present in the project root directory.
 
-5. **Run the Flask App**
-
+### 5. Run the Flask App
+```bash
 python app.py
+```
 
-6. **Access the App in Your Browser**
+### 6. Access the App in Your Browser
+Visit: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-Visit:http://127.0.0.1:5000 
+## 🧪 Sample Inputs for Prediction
 
-
-🧪 Sample Inputs for Prediction
 You can use the following values to test the prediction:
 
-| **Feature**      | **Sample Value** |
-| ---------------- | ---------------- |
-| `u_q`            | 50.0             |
-| `coolant`        | 35.0             |
-| `stator_winding` | 60.0             |
-| `u_d`            | 48.0             |
-| `stator_tooth`   | 55.0             |
-| `motor_speed`    | 1475.0           |
-| `i_d`            | 1.2              |
-| `i_q`            | 0.8              |
-| `stator_yoke`    | 52.0             |
-| `torque`         | 42.0             |
+| **Feature**      | **Sample Value** | **Description** |
+|------------------|------------------|-----------------|
+| `u_q`            | 50.0            | Q-axis voltage (V) |
+| `coolant`        | 35.0            | Coolant temperature (°C) |
+| `stator_winding` | 60.0            | Stator winding temperature (°C) |
+| `u_d`            | 48.0            | D-axis voltage (V) |
+| `stator_tooth`   | 55.0            | Stator tooth temperature (°C) |
+| `motor_speed`    | 1475.0          | Motor speed (RPM) |
+| `i_d`            | 1.2             | D-axis current (A) |
+| `i_q`            | 0.8             | Q-axis current (A) |
+| `stator_yoke`    | 52.0            | Stator yoke temperature (°C) |
+| `torque`         | 42.0            | Motor torque (Nm) |
 
-✅ Sample Output
+## ✅ Sample Output
+```
 Predicted Rotor Temperature: 74.38°C
+```
 
+
+---
 
