@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Temperature Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Motor Temperature Prediction</h1>
+            <p class="subtitle">Predict permanent magnet surface temperature representing rotor temperature using motor parameters</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Electric Motor Temperature Prediction</h2>
+                <p class="description">Enter the motor parameters below to get an accurate temperature prediction</p>
+            </div>
+            
+            <form method="POST" action="/y_predict">
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label for="u_q">Voltage q-component (V)</label>
+                        <input type="number" id="u_q" name="u_q" placeholder="Enter voltage q-component" step="0.01" required>
+                        <span class="input-hint">Q-axis voltage component</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="coolant">Coolant Temperature (°C)</label>
+                        <input type="number" id="coolant" name="coolant" placeholder="Enter coolant temperature" step="0.01"  required>
+                        <span class="input-hint">Temperature of cooling fluid</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stator_winding">Stator Winding (°C)</label>
+                        <input type="number" id="stator_winding" name="stator_winding" placeholder="Enter stator winding temperature" step="0.01" required>
+                        <span class="input-hint">Stator winding temperature</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="u_d">Voltage d-component (V)</label>
+                        <input type="number" id="u_d" name="u_d" placeholder="Enter voltage d-component" step="0.01" required>
+                        <span class="input-hint">D-axis voltage component</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stator_tooth">Stator Tooth (°C)</label>
+                        <input type="number" id="stator_tooth" name="stator_tooth" placeholder="Enter stator tooth temperature" step="0.01" required>
+                        <span class="input-hint">Stator tooth temperature</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="motor_speed">Motor Speed (RPM)</label>
+                        <input type="number" id="motor_speed" name="motor_speed" placeholder="Enter motor speed" step="0.01" required>
+                        <span class="input-hint">Rotational speed in RPM</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="i_d">Current d-component (A)</label>
+                        <input type="number" id="i_d" name="i_d" placeholder="Enter current d-component" step="0.01" required>
+                        <span class="input-hint">D-axis current component</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="i_q">Current q-component (A)</label>
+                        <input type="number" id="i_q" name="i_q" placeholder="Enter current q-component" step="0.01" required>
+                        <span class="input-hint">Q-axis current component</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stator_yoke">Stator Yoke (°C)</label>
+                        <input type="number" id="stator_yoke" name="stator_yoke" placeholder="Enter stator yoke temperature" step="0.01" required>
+                        <span class="input-hint">Stator yoke temperature</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="torque">Torque (Nm)</label>
+                        <input type="number" id="torque" name="torque" placeholder="Enter torque value" step="0.01" required>
+                        <span class="input-hint">Motor torque in Newton-meters</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="btn-icon">🔮</span>
+                    PREDICT TEMPERATURE
+                </button>
+            </form>
+
+            {% if prediction_text %}
+            <div class="prediction-result">
+                <div class="result-icon">🌡️</div>
+                <h3>Prediction Result</h3>
+                <div class="result-value">{{ prediction_text }}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

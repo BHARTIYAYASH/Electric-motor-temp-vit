@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Electric Motor Temperature</h1>
+    </div>
+    
+    <div class="container">
+        <div class="result-container">
+            <h2>Temperature Prediction Result</h2>
+            
+            <div class="prediction-result">
+                <h3>Predicted Rotor Temperature:</h3>
+                <div class="prediction-value">{{ prediction }}°C</div>
+            </div>
+            
+            <div class="button-group">
+                <a href="/" class="back-btn">Go Back</a>
+                <a href="/manual_predict" class="predict-again-btn">Predict Again</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
