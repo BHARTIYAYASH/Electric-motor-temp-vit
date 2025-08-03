@@ -59,8 +59,8 @@ This ML-based Flask app allows users to input real-time motor parameters and get
 
 1. **Clone the repository**
 
-git clone https://github.com/yourusername/motor-temp-predictor.git
-cd motor-temp-predictor
+git clone https://github.com/BHARTIYAYASH/Electric-motor-temp-vit.git
+cd motor-temp-prediction
 
 2. **Create a Virtual Environment and Activate It**
 
